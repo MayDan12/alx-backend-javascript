@@ -14,7 +14,7 @@ export default function handleProfileSignup(firstName, lastName, filename) {
       }
       return [{
         status: data[1].status,
-        error: data[1].reason,
+        value: data[1].reason,
       }];
     });
 }

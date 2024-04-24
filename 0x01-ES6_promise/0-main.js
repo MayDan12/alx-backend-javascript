@@ -12,9 +12,12 @@
 
 // const promise = Promise.resolve();
 // handleResponseFromAPI(promise);
-import handleProfileSignup from "./3-all";
 
-handleProfileSignup();
+
+
+// import handleProfileSignup from "./3-all";
+
+// handleProfileSignup();
 
 // import signUpUser from "./4-user-promise";
 
@@ -25,9 +28,9 @@ handleProfileSignup();
 
 // console.log(uploadPhoto('guillaume.jpg'));
 
-// import handleProfileSignup from './6-final-user';
+import handleProfileSignup from './6-final-user';
 
-// console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg"));
+console.log(handleProfileSignup("Bob", "Dylan", "bob_dylan.jpg"));
 
 
 // import loadBalancer from "./7-load_balancer";

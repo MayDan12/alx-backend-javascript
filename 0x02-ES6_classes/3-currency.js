@@ -1,15 +1,15 @@
 export default class Currency {
   constructor(code, name) {
     this._code = code;
-    this._name = name; 
+    this._name = name;
   }
 
   get name() {
-    return this._name
+    return this._name;
   }
 
   get code() {
-    return this._code
+    return this._code;
   }
 
   set name(newName) {
@@ -25,7 +25,6 @@ export default class Currency {
   }
 
   displayFullCurrency() {
-    return `${this._name} (${this._code})`
+    return `${this._name} (${this._code})`;
   }
-
 }

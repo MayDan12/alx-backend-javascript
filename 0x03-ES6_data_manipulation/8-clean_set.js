@@ -1,11 +1,16 @@
-export default function cleanSet(setobj, startstring) {
-  const valuesStartingWithPrefix = [];
-  setobj.forEach((value) => {
-    if (value.startsWith(startstring)) {
-      valuesStartingWithPrefix.push(value.slice(startstring.length));
-    } else {
-      setobj.clear();
+export default function cleanSet(set, startString) {
+  const parts = [];
+  if (!set || !startString || !(set instanceof Set) || typeof startString !== 'string') {
+    return '';
+  }
+  for (const value of set.values()) {
+    if (typeof value === 'string' && value.startsWith(startString)) {
+      const valueSubStr = value.substring(startString.length);
+
+      if (valueSubStr && valueSubStr !== value) {
+        parts.push(valueSubStr);
+      }
     }
-  });
-  return valuesStartingWithPrefix.join('-');
+  }
+  return parts.join('-');
 }

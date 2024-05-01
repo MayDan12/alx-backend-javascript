@@ -1,4 +1,4 @@
-interface Teacher {
+export interface Teacher {
   firstName: string;
   lastName: string;
   fullTimeEmployee: boolean;
@@ -7,28 +7,37 @@ interface Teacher {
   [key: string]: any;
 }
 
-function createTeacher(options: Partial<Teacher>): Teacher {
-  const { firstName, lastName, fullTimeEmployee, location, yearsOfExperience, ...rest } = options;
-  const teacher: Teacher = {
-    firstName: firstName!,
-    lastName: lastName!,
-    fullTimeEmployee: fullTimeEmployee!,
-    location: location!,
-    ...rest,
-  };
-  if (yearsOfExperience !== undefined) {
-    teacher.yearsOfExperience = yearsOfExperience;
-  }
-  return teacher;
+
+
+export interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
 }
 
-const teacher3: Teacher = createTeacher({
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false, // Additional attribute
-});
+export function printTeacher(firstName: string, lastName: string): string {
+  return `${firstName[0]}, ${lastName}`
+}
 
-console.log(teacher3);
 
+interface Student {
+  workOnHomework(): string;
+  displayName(): string;
+}
+
+
+export class StudentClass implements Student {
+  firstName: string;
+  lastName: string;
+
+  constructor(firstName: string, lastName: string) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  workOnHomework(): string {
+    return "Currently working on homework"
+  }
+
+  displayName(): string {
+    return this.firstName;
+  }
+}

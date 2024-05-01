@@ -1,4 +1,4 @@
-interface Student {
+export interface Student {
   firstName: string;
   lastName: string;
   age: number;
@@ -21,18 +21,41 @@ const student2: Student = {
 
 const studentsList: Student[] = [student1, student2];
 
-document.addEventListener("DOMContentLoaded", () => {
-  const table = document.createElement("table");
+let table = document.createElement('table');
 
-  // Iterate over the students array and append a new row for each student
-  studentsList.forEach(student => {
-    const row = table.insertRow();
-    const cell1 = row.insertCell();
-    const cell2 = row.insertCell();
-    
-    cell1.textContent = student.firstName;
-    cell2.textContent = student.location;
-  });
+// Create a header row
+let headerRow = document.createElement('tr');
 
-  document.body.appendChild(table);
+// Create header cells for first name and location
+let firstNameHeader = document.createElement('th');
+firstNameHeader.textContent = 'First Name';
+let locationHeader = document.createElement('th');
+locationHeader.textContent = 'Location';
+
+// Append the header cells to the header row
+headerRow.appendChild(firstNameHeader);
+headerRow.appendChild(locationHeader);
+
+// Append the header row to the table
+table.appendChild(headerRow);
+
+// Iterate over the studentsList array and append a new row for each student
+studentsList.forEach(student => {
+  let row = document.createElement('tr');
+  
+  // Create cells for first name and location
+  let firstNameCell = document.createElement('td');
+  firstNameCell.textContent = student.firstName;
+  let locationCell = document.createElement('td');
+  locationCell.textContent = student.location;
+  
+  // Append the cells to the row
+  row.appendChild(firstNameCell);
+  row.appendChild(locationCell);
+  
+  // Append the row to the table
+  table.appendChild(row);
 });
+
+// Append the table to the document body or any other desired element
+document.body.appendChild(table);

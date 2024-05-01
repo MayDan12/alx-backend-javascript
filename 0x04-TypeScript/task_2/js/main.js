@@ -57,3 +57,17 @@ console.log(createEmployee(1000));
 console.log(createEmployee('$500'));
 console.log(executeWork(createEmployee(200)));
 console.log(executeWork(createEmployee(1000)));
+function teachClass(todayClass) {
+    if (todayClass === "Math") {
+        return "Teaching Math";
+    }
+    else if (todayClass === "History") {
+        return "Teaching History";
+    }
+    else {
+        // Handle potential future subjects here
+        return "Teaching Other Subject";
+    }
+}
+console.log(teachClass('Math'));
+console.log(teachClass('History'));

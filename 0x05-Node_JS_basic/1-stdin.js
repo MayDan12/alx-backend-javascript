@@ -1,17 +1,23 @@
 // 1-stdin.js
+process.stdout.write("Welcome to Holberton School, what is your name?\n");
 
-const readline = require("readline");
+if (process.stdin.isTTY) {
+  // For TTY input (interactive input)
+  process.stdin.on("data", (data) => {
+    const name = data.toString().trim();
+    process.stdout.write(`Your name is: ${name}\n`);
+    process.stdout.write("This important software is now closing\n");
+    process.exit();
+  });
+} else {
+  // For non-TTY input (piped input)
+  process.stdin.on("data", (data) => {
+    const name = data.toString().trim();
+    process.stdout.write(`Your name is: ${name}\n`);
+    process.exit();
+  });
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
-
-rl.question("Welcome to Holberton School, what is your name? \n", (name) => {
-  console.log(`Your name is: ${name}`);
-  rl.close();
-});
-
-rl.on("close", () => {
-  console.log("This important software is now closing\n");
-});
+  process.on("exit", () => {
+    process.stdout.write("This important software is now closing\n");
+  });
+}

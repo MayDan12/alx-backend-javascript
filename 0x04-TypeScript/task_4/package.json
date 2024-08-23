@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "node init && webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
